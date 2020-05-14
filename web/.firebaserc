@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "delpueblo-gt"
+  },
+  "targets": {
+    "delpueblo-gt": {
+      "hosting": {
+        "del-pueblo": [
+          "delpueblo-gt"
+        ]
+      }
+    }
+  }
+}

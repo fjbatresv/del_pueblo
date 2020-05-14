@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"
+    [ngStyle]="{'display': (isHandset$ | async) ? '': 'none'}">
+    <mat-toolbar>Menú</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/'">Inicio</a>
+    </mat-nav-list>
+  </mat-sidenav> -->
+  <mat-sidenav-content style="margin-left: 0;">
+    <mat-toolbar color="primary">
+      <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+      <mat-toolbar-row class=" d-flex justify-content-between">
+        <nav>
+          <a mat-button [routerLink]="'/'">
+            <img src="assets/imgs/logo.png" style="max-height: 75px;" />
+          </a>
+        </nav>
+        <a mat-raised-button [routerLink]="'cart'" [matBadge]="total$ | async" matBadgeColor="warn" >
+          <mat-icon>
+            shopping_cart
+          </mat-icon>
+        </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,70 @@
+<div class="row" style="padding-top: 15px;">
+  <div class="col">
+    <form name="checkoutForm" [formGroup]="form" (ngSubmit)="checkout($event)">
+      <mat-card>
+        <mat-card-title>
+          Confirmar Pedido
+        </mat-card-title>
+        <mat-card-content>
+          <div class="row-col-1">
+            <mat-form-field class="w-100">
+              <mat-label>Nombre completo</mat-label>
+              <input matInput formControlName="name" required>
+            </mat-form-field>
+          </div>
+          <div class="row-col">
+            <mat-form-field class="w-100">
+              <mat-label>Correo Electrónico</mat-label>
+              <input matInput formControlName="email" type="email" required>
+            </mat-form-field>
+          </div>
+          <div class="row-cols">
+            <mat-form-field class="w-100">
+              <mat-label>Teléfono</mat-label>
+              <input matInput formControlName="phone" type="phone" required>
+            </mat-form-field>
+          </div>
+          <div class="row-cols">
+            <mat-form-field class="w-100">
+              <mat-label>Sector o Zona</mat-label>
+              <mat-select [(value)]="selectedZone" (change)="changeZone()">
+                <mat-option *ngFor="let zone of zones$ | async" [value]="zone">
+                  {{ zone.zone }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="row-cols">
+            <mat-form-field class="w-100">
+              <mat-label>Dirección Exacta</mat-label>
+              <input matInput formControlName="address" required>
+            </mat-form-field>
+          </div>
+          <div class="row-cols text-right ">
+            <mat-slide-toggle (change)="getLocation()" [(ngModel)]="location">
+              Agregar mi ubicación
+            </mat-slide-toggle>
+          </div>
+          <div class="row-cols text-right ">
+            <span class="mat-card-subtitle">
+              Total del Producto: {{ total | currency : 'GTQ' : 'symbol-narrow' }}
+            </span>
+            <span class="mat-card-subtitle">
+              Costo de Envío:
+              {{ (selectedZone !== undefined ? selectedZone.charge : 0) | currency : 'GTQ' : 'symbol-narrow' }}
+            </span>
+            <span class="mat-card-title">
+              Total:
+              {{ (selectedZone !== undefined ? selectedZone.charge + total : total) | currency : 'GTQ' : 'symbol-narrow' }}
+            </span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="text-right">
+          <button mat-raised-button color="accent" type="submit">
+            Enviar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

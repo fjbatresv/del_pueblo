@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 grid-item" *ngFor="let product of products$ | async">
+    <mat-card class="mat-elevation-z2 ">
+      <img mat-card-image [src]="product.photoUrl" style="max-height: 400px;" />
+      <mat-card-content>
+        <div class="row">
+          <span class="mat-card-title col">
+            {{ product.name }}
+          </span>
+        </div>
+        <div class="row text-right">
+          <span class="col mat-subheading-2">
+            {{ product.sale | currency : 'GTQ' : 'symbol-narrow' }}
+          </span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" class="col" type="button" (click)="addToCart(product)">
+          <mat-icon>
+            add_shopping_cart
+          </mat-icon> Agregar al carrito
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
